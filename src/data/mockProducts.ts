@@ -36,10 +36,10 @@ const generateProducts = (): Product[] => {
     // Helper to get random image based on category
     const getPlaceholder = (cat: string) => {
         const images: { [key: string]: string } = {
-            material: "/family_fishing_trip_1769678782051.png", // Reusing existing or can use generic placeholders
-            rods: "/deep_sea_fishing_trip_1769678745974.png",
-            reels: "/agadir_fishing_hero_1769678716870.png",
-            lures: "/deep_sea_fishing_trip_1769678745974.png"
+            material: "/blue_boats.jpg",
+            rods: "/rod_sunset.jpg",
+            reels: "/agadir_kasbah.jpg",
+            lures: "/legzira.jpg"
         };
         return images[cat] || images.material;
     };

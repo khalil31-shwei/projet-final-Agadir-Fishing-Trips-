@@ -1,139 +1,138 @@
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-
-interface Trip {
-    id: number;
-    title: string;
-    description: string;
-    duration: string;
-    price: string;
-    capacity: string;
-    image: string;
-    tag: string;
-}
+import { Link } from 'react-router-dom';
 
 const Trips = () => {
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
     const isArabic = i18n.language === 'ar';
 
-    const trips: Trip[] = [
+    const activities = [
         {
-            id: 1,
-            title: isArabic ? 'رحلة صيد ساحلية' : 'Half-Day Coastal Fishing',
-            description: isArabic ? 'تجربة مريحة للعائلات والمبتدئين على طول ساحل أكادير.' : 'Relaxing coastal experience for families and beginners.',
-            duration: '4 hours',
-            price: isArabic ? '500 MAD' : '50 €',
-            capacity: '1-6 people',
-            image: '/family_fishing_trip_1769678782051.png',
-            tag: isArabic ? 'مفضل العائلات' : 'Family Favorite'
+            id: 'rod-fishing',
+            title: 'Rod Fishing',
+            titleAr: 'صيد بالقصبة',
+            description: 'Traditional fishing from shore or boat. Perfect for all skill levels.',
+            descriptionAr: 'الصيد التقليدي من الشاطئ أو القارب. مثالي لجميع المستويات.',
+            image: '/rod_sunset.jpg',
+            icon: '🎣',
+            color: 'from-primary-600 to-ocean-600'
         },
         {
-            id: 2,
-            title: isArabic ? 'صيد الأعماق للمحترفين' : 'Deep Sea Big Game',
-            description: isArabic ? 'مطاردة التونة والمارلين في أعماق المحيط الأطلسي.' : 'Chasing tuna and marlin in the deep blue Atlantic.',
-            duration: '8 hours',
-            price: isArabic ? '1500 MAD' : '150 €',
-            capacity: '1-8 people',
-            image: '/deep_sea_fishing_trip_1769678745974.png',
-            tag: isArabic ? 'مغامرة للمحترفين' : 'Pro Adventure'
+            id: 'spearfishing',
+            title: 'Spearfishing',
+            titleAr: 'صيد تحت الماء',
+            description: 'Underwater hunting for experienced divers. Explore the Atlantic depths.',
+            descriptionAr: 'الصيد تحت الماء للغواصين ذوي الخبرة. استكشف أعماق المحيط الأطلسي.',
+            image: '/legzira.jpg',
+            icon: '🤿',
+            color: 'from-ocean-600 to-primary-800'
         },
         {
-            id: 3,
-            title: isArabic ? 'تجربة صيد وقت الغروب' : 'Sunset Fishing Experience',
-            description: isArabic ? 'امزج بين الصيد ومشاهدة غروب الشمس الساحر.' : 'Combine fishing with breathtaking sunset views.',
-            duration: '3 hours',
-            price: isArabic ? '400 MAD' : '40 €',
-            capacity: '1-4 people',
-            image: '/agadir_fishing_hero_1769678716870.png',
-            tag: isArabic ? 'رومانسي' : 'Romantic'
-        },
-        {
-            id: 4,
-            title: isArabic ? 'قارب خاص' : 'Private Charter',
-            description: isArabic ? 'خصص رحلة الصيد الخاصة بك بالكامل.' : 'Fully customize your own fishing adventure.',
-            duration: 'Flexible',
-            price: isArabic ? 'Custom' : 'Custom',
-            capacity: '1-10 people',
-            image: '/agadir_fishing_hero_1769678716870.png',
-            tag: isArabic ? 'حصري' : 'Exclusive'
+            id: 'octopus-fishing',
+            title: 'Traditional Octopus Fishing',
+            titleAr: 'صيد الأخطبوط التقليدي',
+            description: 'Ancient local technique. A cultural fishing experience unique to Morocco.',
+            descriptionAr: 'تقنية محلية قديمة. تجربة صيد ثقافية فريدة من نوعها في المغرب.',
+            image: '/blue_boats.jpg',
+            icon: '🐙',
+            color: 'from-accent-600 to-primary-900'
         }
     ];
 
     return (
-        <div className="min-h-screen bg-slate-50 py-20">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="mb-16 text-center max-w-3xl mx-auto">
-                    <motion.h1
+        <div className="min-h-screen bg-slate-50 pt-20 pb-24">
+            {/* Header */}
+            <div className="bg-primary-950 text-white pb-32 pt-16 relative overflow-hidden rounded-b-[3rem] shadow-premium">
+                <div className="absolute inset-0 bg-mesh opacity-10" />
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <motion.div
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="text-4xl md:text-6xl font-extrabold mb-6 text-slate-900"
+                        className="space-y-6"
                     >
-                        {t('nav.trips')}
-                    </motion.h1>
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2 }}
-                        className="text-xl text-slate-600 font-light"
-                    >
-                        {isArabic ? t('trips.local_msg') : t('trips.tourist_msg')}
-                    </motion.p>
+                        <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter">
+                            {isArabic ? 'اختر نشاطك' : 'Choose Your Activity'}
+                        </h1>
+                        <p className="text-xl md:text-2xl text-primary-200 font-light max-w-3xl mx-auto">
+                            {isArabic
+                                ? 'ثلاث تجارب صيد أصيلة في مياه أكادير الأطلسية'
+                                : 'Three authentic fishing experiences in the Atlantic waters of Agadir'}
+                        </p>
+                    </motion.div>
                 </div>
+            </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    {trips.map((trip) => (
+            {/* Activity Cards */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-20 relative z-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {activities.map((activity, index) => (
                         <motion.div
-                            key={trip.id}
-                            initial={{ opacity: 0, y: 30 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            className="group relative bg-white rounded-[2rem] overflow-hidden shadow-premium hover:shadow-premium-hover transition-all duration-500"
+                            key={activity.id}
+                            initial={{ opacity: 0, y: 40 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: index * 0.15 }}
+                            className="group bg-white rounded-[2.5rem] overflow-hidden shadow-premium hover:shadow-premium-hover transition-all duration-500 border-2 border-slate-100 hover:border-primary-200 flex flex-col"
                         >
-                            <div className="aspect-[16/10] overflow-hidden relative">
+                            {/* Image */}
+                            <div className="aspect-[4/3] relative overflow-hidden">
                                 <img
-                                    src={trip.image}
-                                    alt={trip.title}
+                                    src={activity.image}
+                                    alt={activity.title}
                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                 />
-                                <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-md px-4 py-1 rounded-full text-sm font-bold text-primary-950 shadow-sm">
-                                    {trip.tag}
+                                <div className={`absolute inset-0 bg-gradient-to-t ${activity.color} opacity-60 group-hover:opacity-40 transition-opacity duration-500`} />
+
+                                {/* Icon Badge */}
+                                <div className="absolute top-6 left-6 w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-xl group-hover:scale-110 transition-transform">
+                                    <span className="text-4xl">{activity.icon}</span>
                                 </div>
                             </div>
 
-                            <div className="p-8">
-                                <div className="flex justify-between items-start mb-4">
-                                    <div>
-                                        <h3 className="text-2xl font-bold text-slate-900 mb-2 transition-colors group-hover:text-primary-600">{trip.title}</h3>
-                                        <div className="flex items-center gap-4 text-sm text-slate-500 font-medium">
-                                            <span className="flex items-center gap-1">⏱️ {trip.duration}</span>
-                                            <span className="flex items-center gap-1">👥 {trip.capacity}</span>
-                                        </div>
-                                    </div>
-                                    <div className="text-right">
-                                        <p className="text-xs text-slate-400 uppercase font-bold tracking-wider mb-1">{t('common.price_starting')}</p>
-                                        <p className="text-3xl font-black text-primary-950">{trip.price}</p>
-                                        <p className="text-[10px] text-slate-400 font-bold">{t('common.per_person')}</p>
-                                    </div>
-                                </div>
-
-                                <p className="text-slate-600 mb-8 line-clamp-2 font-light leading-relaxed">
-                                    {trip.description}
+                            {/* Content */}
+                            <div className="p-8 flex flex-col flex-grow">
+                                <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-4 group-hover:text-primary-600 transition-colors">
+                                    {isArabic ? activity.titleAr : activity.title}
+                                </h2>
+                                <p className="text-slate-600 text-base font-light leading-relaxed mb-8 flex-grow">
+                                    {isArabic ? activity.descriptionAr : activity.description}
                                 </p>
 
-                                <div className="flex gap-3">
-                                    <Link to={`/trips/${trip.id}`} className="btn-premium flex-1 group">
-                                        View Details
-                                        <span className="group-hover:translate-x-1 transition-transform">→</span>
-                                    </Link>
-                                    <a href="https://wa.me/212XXXXXXXXX" className="p-3 bg-green-50 text-green-600 rounded-full hover:bg-green-100 transition-colors">
-                                        <span className="text-xl">💬</span>
-                                    </a>
-                                </div>
+                                {/* CTA Button */}
+                                <Link
+                                    to={`/trips/${activity.id}`}
+                                    className="btn-accent w-full py-4 text-center text-base font-bold uppercase tracking-widest"
+                                >
+                                    {isArabic ? 'استكشف النشاط' : 'Explore Activity'}
+                                </Link>
                             </div>
                         </motion.div>
                     ))}
                 </div>
+            </div>
+
+            {/* Info Banner */}
+            <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-20">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    className="bg-gradient-to-br from-primary-950 to-ocean-900 text-white rounded-[2rem] p-8 md:p-12 text-center shadow-premium"
+                >
+                    <h3 className="text-2xl md:text-3xl font-black mb-4 uppercase tracking-tight">
+                        {isArabic ? 'لست متأكدًا من أين تبدأ؟' : 'Not Sure Where to Start?'}
+                    </h3>
+                    <p className="text-lg text-primary-100 font-light mb-6 max-w-2xl mx-auto">
+                        {isArabic
+                            ? 'تواصل مع فريقنا للحصول على توصيات مخصصة بناءً على خبرتك وتفضيلاتك'
+                            : 'Contact our team for personalized recommendations based on your experience and preferences'}
+                    </p>
+                    <Link
+                        to="/contact"
+                        className="inline-block bg-accent-500 text-primary-950 font-bold py-4 px-10 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 active:scale-95"
+                    >
+                        {isArabic ? 'اتصل بنا' : 'Contact Us'}
+                    </Link>
+                </motion.div>
             </div>
         </div>
     );

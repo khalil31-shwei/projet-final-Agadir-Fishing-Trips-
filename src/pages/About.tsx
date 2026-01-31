@@ -10,14 +10,14 @@ const About = () => {
             role: 'Master of Deep Sea',
             bio: '25 years of experience navigating the Atlantic. Former commercial fisherman turned guide.',
             icon: '⚓',
-            image: '/family_fishing_trip_1769678782051.png'
+            image: '/rod_sunset.jpg'
         },
         {
             name: 'Captain Hassan',
             role: 'Coastal Specialist',
             bio: 'Nobody knows the Agadir reefs better than Hassan. Expert in light tackle and family fun.',
             icon: '🎣',
-            image: '/deep_sea_fishing_trip_1769678745974.png'
+            image: '/blue_boats.jpg'
         },
     ];
 
@@ -74,7 +74,7 @@ const About = () => {
                                 viewport={{ once: true }}
                                 className="rounded-[3rem] overflow-hidden shadow-premium border-8 border-white"
                             >
-                                <img src="/agadir_fishing_hero_1769678716870.png" alt="Legacy" />
+                                <img src="/agadir_kasbah.jpg" alt="Legacy" className="w-full h-full object-cover" />
                             </motion.div>
                             <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-accent-500 rounded-full flex items-center justify-center text-primary-950 font-black text-center p-6 shadow-xl rotate-12">
                                 EST. 1998<br />AGADIR MARINA

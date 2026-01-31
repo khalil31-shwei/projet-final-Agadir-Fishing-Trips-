@@ -27,7 +27,7 @@ const Home = () => {
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-gradient-to-r from-primary-950/90 to-transparent z-10" />
                     <img
-                        src="/agadir_fishing_hero_1769678716870.png"
+                        src="/agadir_night.jpg"
                         alt="Agadir Fishing"
                         className="w-full h-full object-cover scale-105 animate-slow-pulse"
                     />
